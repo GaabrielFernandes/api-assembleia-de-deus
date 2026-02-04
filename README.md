@@ -14,7 +14,7 @@ API REST para um sistema de gestão (membros e futuras movimentações financeir
 
 ## Como rodar local
 1. Configure o banco (PostgreSQL)
-2. Crie um arquivo `application.yml` (não versionado) com as configs
+2. Crie um arquivo `application.properties` (não versionado) com as configs
 3. Rode:
 ```bash
 ./mvnw spring-boot:run
