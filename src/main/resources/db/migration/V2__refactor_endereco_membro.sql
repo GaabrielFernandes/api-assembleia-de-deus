@@ -1,0 +1,15 @@
+ALTER TABLE membro
+
+  DROP COLUMN IF EXISTS cep_nascimento,
+  DROP COLUMN IF EXISTS uf_nascimento;
+
+ALTER TABLE membro
+  ADD COLUMN IF NOT EXISTS logradouro_atual VARCHAR(150),
+  ADD COLUMN IF NOT EXISTS bairro_atual     VARCHAR(120),
+  ADD COLUMN IF NOT EXISTS numero_atual     VARCHAR(20),
+  ADD COLUMN IF NOT EXISTS complemento_atual VARCHAR(120);
+
+ALTER TABLE membro
+  ALTER COLUMN cep_atual TYPE VARCHAR(8),
+  ALTER COLUMN uf_atual TYPE VARCHAR(2),
+  ALTER COLUMN cidade_atual TYPE VARCHAR(120);
