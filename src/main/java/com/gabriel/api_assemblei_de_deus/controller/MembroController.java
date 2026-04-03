@@ -1,8 +1,8 @@
 package com.gabriel.api_assemblei_de_deus.controller;
 
 import com.gabriel.api_assemblei_de_deus.DTO.MembroPage;
-import com.gabriel.api_assemblei_de_deus.DTO.MembroResponseDTO;
-import com.gabriel.api_assemblei_de_deus.DTO.MembroRequestDTO;
+import com.gabriel.api_assemblei_de_deus.DTO.response.MembroResponseDTO;
+import com.gabriel.api_assemblei_de_deus.DTO.request.MembroRequestDTO;
 import com.gabriel.api_assemblei_de_deus.service.MembroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +13,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/membros")
@@ -34,6 +36,11 @@ public class MembroController {
     @GetMapping("/{id}")
     public ResponseEntity<MembroResponseDTO> buscarMembro(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarMembro(id));
+    }
+
+    @GetMapping("/buscarMembroPeloNome")
+    public ResponseEntity<List<MembroPage>> buscarMembroPeloNome(@RequestParam String nome){
+        return ResponseEntity.status(HttpStatus.OK).body(service.buscarPeloNome(nome));
     }
 
     @PutMapping("/{id}")
