@@ -33,7 +33,7 @@ public class Diretor implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_"+departamento.getNome()));
+        return List.of(new SimpleGrantedAuthority("ROLE_"+departamento.name()));
     }
 
     @Override
