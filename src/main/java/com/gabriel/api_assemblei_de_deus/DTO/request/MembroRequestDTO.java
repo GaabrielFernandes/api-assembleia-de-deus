@@ -21,11 +21,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class MembroRequestDTO {
     @NotBlank
-    @Size(max = 150
-
-
-
-    )
+    @Size(max = 150)
     private String nomeCompleto;
     private Sexo sexo;
     private LocalDate dataNascimento;

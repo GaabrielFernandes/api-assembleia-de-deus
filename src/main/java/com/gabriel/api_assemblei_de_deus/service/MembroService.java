@@ -1,6 +1,6 @@
 package com.gabriel.api_assemblei_de_deus.service;
 
-import com.gabriel.api_assemblei_de_deus.DTO.MembroPage;
+import com.gabriel.api_assemblei_de_deus.DTO.page.MembroPage;
 import com.gabriel.api_assemblei_de_deus.DTO.response.MembroResponseDTO;
 import com.gabriel.api_assemblei_de_deus.DTO.request.MembroRequestDTO;
 import com.gabriel.api_assemblei_de_deus.entity.Membro;

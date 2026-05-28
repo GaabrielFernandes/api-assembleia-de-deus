@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Departamento {
+    ADMINISTRADOR("Administrador"),
     SECRETARIA("Secretaria"),
     TESOURARIA("tesouraria"),
     CONSELHO_FISCAL("conselho fiscal");

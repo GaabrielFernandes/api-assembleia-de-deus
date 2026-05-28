@@ -1,4 +1,4 @@
-package com.gabriel.api_assemblei_de_deus.DTO;
+package com.gabriel.api_assemblei_de_deus.DTO.page;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -16,4 +16,5 @@ public class TokenResponseDto {
     private String tipo;
     private String email;
     private Departamento departamento;
+    private boolean senhaProvisoria;
 }

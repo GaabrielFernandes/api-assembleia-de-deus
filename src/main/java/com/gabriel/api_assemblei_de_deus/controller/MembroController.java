@@ -1,6 +1,6 @@
 package com.gabriel.api_assemblei_de_deus.controller;
 
-import com.gabriel.api_assemblei_de_deus.DTO.MembroPage;
+import com.gabriel.api_assemblei_de_deus.DTO.page.MembroPage;
 import com.gabriel.api_assemblei_de_deus.DTO.response.MembroResponseDTO;
 import com.gabriel.api_assemblei_de_deus.DTO.request.MembroRequestDTO;
 import com.gabriel.api_assemblei_de_deus.service.MembroService;
@@ -23,7 +23,8 @@ import java.util.List;
 public class MembroController {
     private final MembroService service;
 
-    @PostMapping
+    @PostMapping("/salvar")
+    @PreAuthorize("hasAuthority('ROLE_SECRETARIA')")
     public ResponseEntity<MembroResponseDTO> cadastrarMembro(@RequestBody @Valid MembroRequestDTO dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrar(dto));
     }
@@ -31,7 +32,7 @@ public class MembroController {
     @GetMapping()
     @PreAuthorize("hasAuthority('ROLE_SECRETARIA')")
     public ResponseEntity<Page<MembroPage>> listarMembros(
-            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(service.listarMembros(pageable));
     }
 

@@ -12,8 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "membro")
@@ -27,10 +29,9 @@ public class Membro {
     private Long id;
 
     @NotBlank
-    @Size(max = 150)
+    @Size(min = 3,max = 150)
     @Column(name = "nome_completo", nullable = false, length = 150)
     private String nomeCompleto;
-
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private Sexo sexo;
@@ -127,4 +128,8 @@ public class Membro {
 
     @Column(columnDefinition = "text")
     private String observacoes;
+
+    @CreationTimestamp
+    @Column(name = "data_cadastro", nullable = false, updatable = false)
+    private LocalDateTime dataCadastro;
 }

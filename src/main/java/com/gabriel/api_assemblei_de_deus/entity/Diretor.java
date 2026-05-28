@@ -30,6 +30,8 @@ public class Diretor implements UserDetails {
     private String senha;
     @Enumerated(EnumType.STRING)
     private Departamento departamento;
+    @Column(name = "senha_provisoria", nullable = false)
+    private boolean senhaProvisoria = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

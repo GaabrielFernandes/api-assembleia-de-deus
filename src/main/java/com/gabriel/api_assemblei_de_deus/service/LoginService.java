@@ -37,7 +37,8 @@ public class LoginService {
                 token,
                 "Bearer",
                 usuario.getEmail(),
-                usuario.getDepartamento()
+                usuario.getDepartamento(),
+                usuario.isSenhaProvisoria()
         );
     }
 }
