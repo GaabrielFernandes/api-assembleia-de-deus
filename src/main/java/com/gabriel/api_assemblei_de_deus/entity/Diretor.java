@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -28,14 +30,22 @@ public class Diretor implements UserDetails {
     @Column(unique = true)
     private String email;
     private String senha;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "usuario_departamento",
+            foreignKey = @ForeignKey(name = "fk_usuario_departamento_id"),
+            joinColumns = @JoinColumn(name = "usuario_id")
+    )
     @Enumerated(EnumType.STRING)
-    private Departamento departamento;
+    @Column(name = "departamentos", nullable = false, length = 100)
+    private Set<Departamento> departamentos;
     @Column(name = "senha_provisoria", nullable = false)
     private boolean senhaProvisoria = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_"+departamento.name()));
+        return departamentos.stream()
+                .map(departamento -> new SimpleGrantedAuthority("ROLE_"+ departamento.name())).collect(Collectors.toList());
     }
 
     @Override

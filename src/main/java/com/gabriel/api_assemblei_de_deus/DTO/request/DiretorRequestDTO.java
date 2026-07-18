@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,5 +16,5 @@ public class DiretorRequestDTO {
     private String nome;
     private String email;
     private String senha;
-    private Departamento departamento;
+    private Set<Departamento> departamentos;
 }
